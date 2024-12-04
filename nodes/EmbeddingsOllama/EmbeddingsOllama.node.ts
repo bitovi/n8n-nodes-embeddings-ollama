@@ -62,7 +62,7 @@ export class EmbeddingsOllama implements INodeType {
 	async supplyData(this: IExecuteFunctions, itemIndex: number): Promise<SupplyData> {
 		this.logger.debug('Supply data for embeddings Ollama');
 		const modelName = this.getNodeParameter('model', itemIndex) as string;
-		const keepAlive = this.getNodeParameter('keepAlive', itemIndex) as string;
+		const keepAlive = this.getNodeParameter('options.keepAlive', itemIndex) as string;
 		const credentials = await this.getCredentials('ollamaApi');
 
 		const embeddings = new OllamaEmbeddings({
